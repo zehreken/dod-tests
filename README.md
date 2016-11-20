@@ -3,9 +3,16 @@ A project for inspecting the memory when Object Oriented vs Data Oriented method
 * Compiling the program using
 $ clang++ -g -o p main.cpp
 
-* Running lldb
+* Loading the program to lldb
 $ lldb p
 
-* Dumping line tables in lldb
-$ image dump line-table main.cpp
+* Running the program
+(lldb) run
 
+* Dumping line tables in lldb
+(lldb) image dump line-table main.cpp
+
+* Setting breakpoints at lines
+(lldb) b main.cpp:4
+
+* 
