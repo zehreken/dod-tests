@@ -15,4 +15,7 @@ $ lldb p
 * Setting breakpoints at lines
 (lldb) b main.cpp:4
 
-* 
+* The program uses pointer to get the address of the array
+
+* Reading memory
+memory read [pointer] [pointer+400]
