@@ -1,5 +1,14 @@
 #include <iostream>
 
+class Big
+{
+	private:
+		int size;
+	public:
+		void setSize(int size);
+		int getSize();
+};
+
 int main()
 {
 		using namespace std;
@@ -14,6 +23,8 @@ int main()
 				ints[i] = 15;
 				cout << ints[i] << endl;
 		}
+
+		Big big;
 
 		cout << "End of program" << endl;
 		
