@@ -4,10 +4,31 @@ class Big
 {
 	private:
 		int size;
+		int cachedArea;
 	public:
 		void setSize(int size);
 		int getSize();
+		int area();
 };
+
+void Big::setSize(int size)
+{
+	this->size = size;
+}
+
+int Big::getSize()
+{
+	return this->size;
+}
+
+int Big::area()
+{
+	if (cachedArea == 0)
+	{
+		cachedArea = size * size * size;
+	}
+	return cachedArea;
+}
 
 int main()
 {
@@ -25,6 +46,11 @@ int main()
 		}
 
 		Big big;
+		cout << "Big size: " << big.getSize() << endl;
+		big.setSize(100000);
+		cout << "Big size: " << big.getSize() << endl;
+		cout << "Address of big: " << &big << endl;
+		cout << "Size of big: " << sizeof(big) << endl;
 
 		cout << "End of program" << endl;
 		

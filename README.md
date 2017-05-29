@@ -24,4 +24,4 @@ $ lldb p
 
 * Reading memory
 
-(lldb) memory read [pointer] [pointer+400]
+(lldb) memory read [address] [address+400]
