@@ -1,10 +1,11 @@
 #include <iostream>
+#include <stack>
 
 class Big
 {
 	private:
 		int size;
-		int cachedArea;
+		int test[262144]; // 1 MB size array
 	public:
 		void setSize(int size);
 		int getSize();
@@ -21,36 +22,21 @@ int Big::getSize()
 	return this->size;
 }
 
-int Big::area()
-{
-	if (cachedArea == 0)
-	{
-		cachedArea = size * size * size;
-	}
-	return cachedArea;
-}
-
 int main()
 {
 		using namespace std;
-
-		int ints[100];
-		int *ptr;
-		ptr = ints;
-		cout << "Address of ints: " << ptr << endl;
 		
-		for (int i = 0; i < 100; ++i)
-		{
-				ints[i] = 15;
-				cout << ints[i] << endl;
-		}
-
+		int bigsSize = 1000;
+		Big* bigs = new Big[bigsSize];
+		
 		Big big;
 		cout << "Big size: " << big.getSize() << endl;
-		big.setSize(100000);
+		big.setSize(1000);
 		cout << "Big size: " << big.getSize() << endl;
 		cout << "Address of big: " << &big << endl;
 		cout << "Size of big: " << sizeof(big) << endl;
+		cout << "Size of big(KB): " << sizeof(big) / 1024 << endl;
+		cout << "Size of bigs: " << sizeof(*bigs) * bigsSize << endl;
 
 		cout << "End of program" << endl;
 		
