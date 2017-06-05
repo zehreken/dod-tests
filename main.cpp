@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 #include <stack>
 
 class Big
@@ -38,7 +39,11 @@ int main()
 		using namespace std;
 		
 		const int bigCount = 1024;
-		Big* bigs = new Big[bigCount];		
+		Big* bigs = new Big[bigCount];
+
+		clock_t t1,t2;
+		t1=clock();
+		
 		for (int i = 0; i < bigCount; i++)
 		{
 			bigs[i].setActor(i);
@@ -50,6 +55,11 @@ int main()
 			cout << "Actor: " << bigs[i].getActor() << "\t Size of Big(KB): " << bigs[i].getSizeInKB() << endl;
 		}
 		*/
+				
+		t2=clock();
+		float diff = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
+		cout << "Running time: " << diff << endl;
+
 		
 		cout << "Address of bigs: " << &bigs << endl;
 		cout << "End of program" << endl;
