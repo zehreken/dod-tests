@@ -38,14 +38,20 @@ int main()
 		using namespace std;
 		
 		const int bigCount = 1024;
-		Big* bigs = new Big[bigCount];
+		Big* bigs = new Big[bigCount];		
+		for (int i = 0; i < bigCount; i++)
+		{
+			bigs[i].setActor(i);
+		}
 		
-		Big big;
-		cout << "Size of Big(KB): " << big.getSizeInKB() << endl;
-		cout << "Size of Big(MB): " << big.getSizeInMB() << endl;
-		big.setActor(1000);
-		cout << "Address of big: " << &big << endl;
-
+		/*
+		for (int i = 0; i < bigCount; i++)
+		{
+			cout << "Actor: " << bigs[i].getActor() << "\t Size of Big(KB): " << bigs[i].getSizeInKB() << endl;
+		}
+		*/
+		
+		cout << "Address of bigs: " << &bigs << endl;
 		cout << "End of program" << endl;
 		
 		return 0;
