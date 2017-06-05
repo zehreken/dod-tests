@@ -79,8 +79,9 @@ int main()
 		bigs[i].setActor(i);
 	}
 	t2 = clock();
-	float diff = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
-	cout << "Running time: " << diff << endl;
+	float diffBig = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
+	cout << "Running time for bigs: " << diffBig << endl;
+	cout << "Size of big(KB): " << bigs[0].getSizeInKB() << endl;
 	cout << "Size of bigs(KB): " << bigs[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of bigs: " << &bigs << endl;
 	
@@ -94,10 +95,13 @@ int main()
 		smalls[i].setActor(i);
 	}
 	t4 = clock();
-	diff = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
-	cout << "Running time: " << diff << endl;
+	float diffSmall = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
+	cout << "\nRunning time for smalls: " << diffSmall << endl;
+	cout << "Size of small(KB): " << smalls[0].getSizeInKB() << endl;
 	cout << "Size of smalls(KB): " << smalls[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of smalls: " << &smalls << endl;
+
+	cout << "Result: " << (diffBig / diffSmall) << " times faster" << endl;
 
 	cout << "End of program" << endl;
 	
