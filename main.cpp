@@ -4,39 +4,47 @@
 class Big
 {
 	private:
-		int size;
-		int test[262144]; // 1 MB size array
+		int actor;
+		int clutter[262144]; // (1MB - 8b) array makes sure that sizeof big is exatly 1MB
 	public:
-		void setSize(int size);
-		int getSize();
-		int area();
+		void setActor(int size);
+		int getActor();
+		int getSizeInKB();
+		int getSizeInMB();
 };
 
-void Big::setSize(int size)
+void Big::setActor(int actor)
 {
-	this->size = size;
+	this->actor = actor;
 }
 
-int Big::getSize()
+int Big::getActor()
 {
-	return this->size;
+	return this->actor;
+}
+
+int Big::getSizeInKB()
+{
+	return sizeof(Big) / 1024;
+}
+
+int Big::getSizeInMB()
+{
+	return sizeof(Big) / 1024 / 1024;
 }
 
 int main()
 {
 		using namespace std;
 		
-		int bigsSize = 1000;
-		Big* bigs = new Big[bigsSize];
+		const int bigCount = 1024;
+		Big* bigs = new Big[bigCount];
 		
 		Big big;
-		cout << "Big size: " << big.getSize() << endl;
-		big.setSize(1000);
-		cout << "Big size: " << big.getSize() << endl;
+		cout << "Size of Big(KB): " << big.getSizeInKB() << endl;
+		cout << "Size of Big(MB): " << big.getSizeInMB() << endl;
+		big.setActor(1000);
 		cout << "Address of big: " << &big << endl;
-		cout << "Size of big: " << sizeof(big) << endl;
-		cout << "Size of big(KB): " << sizeof(big) / 1024 << endl;
-		cout << "Size of bigs: " << sizeof(*bigs) * bigsSize << endl;
 
 		cout << "End of program" << endl;
 		
