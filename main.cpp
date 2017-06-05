@@ -10,8 +10,8 @@ class Big
 	public:
 		void setActor(int size);
 		int getActor();
-		int getSizeInKB();
-		int getSizeInMB();
+		float getSizeInKB();
+		float getSizeInMB();
 };
 
 void Big::setActor(int actor)
@@ -24,14 +24,14 @@ int Big::getActor()
 	return this->actor;
 }
 
-int Big::getSizeInKB()
+float Big::getSizeInKB()
 {
-	return sizeof(Big) / 1024;
+	return sizeof(Big) / 1024.f;
 }
 
-int Big::getSizeInMB()
+float Big::getSizeInMB()
 {
-	return sizeof(Big) / (1024 * 1024);
+	return sizeof(Big) / (1024.f * 1024.f);
 }
 
 class Small
@@ -41,8 +41,8 @@ class Small
 	public:
 		void setActor(int size);
 		int getActor();
-		int getSizeInKB();
-		int getSizeInMB();
+		float getSizeInKB();
+		float getSizeInMB();
 };
 
 void Small::setActor(int actor)
@@ -55,21 +55,21 @@ int Small::getActor()
 	return this->actor;
 }
 
-int Small::getSizeInKB()
+float Small::getSizeInKB()
 {
-	return sizeof(Small) / 1024;
+	return sizeof(Small) / 1024.f;
 }
 
-int Small::getSizeInMB()
+float Small::getSizeInMB()
 {
-	return sizeof(Small) / (1024 * 1024);
+	return sizeof(Small) / (1024.f * 1024.f);
 }
 
 int main()
 {
 	using namespace std;
 	
-	const int SIZE = 10240;
+	const int SIZE = 50000;
 	
 	Big* bigs = new Big[SIZE];
 	clock_t t1, t2;
@@ -81,6 +81,7 @@ int main()
 	t2 = clock();
 	float diff = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
 	cout << "Running time: " << diff << endl;
+	cout << "Size of bigs(KB): " << bigs[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of bigs: " << &bigs << endl;
 	
 	// ==========
@@ -95,6 +96,7 @@ int main()
 	t4 = clock();
 	diff = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
 	cout << "Running time: " << diff << endl;
+	cout << "Size of smalls(KB): " << smalls[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of smalls: " << &smalls << endl;
 
 	cout << "End of program" << endl;
