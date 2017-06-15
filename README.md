@@ -24,4 +24,8 @@ $ lldb p
 
 * Reading memory
 
-(lldb) memory read [address] [address+400]
+This reads 32 bytes of memory
+(lldb) memory read [address]
+
+This reads n bytes of memory
+(lldb) memory read [address] [address+n]

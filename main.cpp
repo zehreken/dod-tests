@@ -76,7 +76,7 @@ int main()
 	t1 = clock();
 	for (int i = 0; i < SIZE; i++)
 	{
-		bigs[i].setActor(0);
+		bigs[i].setActor(i);
 	}
 	t2 = clock();
 	float diffBig = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
@@ -93,7 +93,7 @@ int main()
 	t3 = clock();
 	for (int i = 0; i < SIZE; i++)
 	{
-		smalls[i].setActor(0);
+		smalls[i].setActor(i);
 	}
 	t4 = clock();
 	float diffSmall = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
