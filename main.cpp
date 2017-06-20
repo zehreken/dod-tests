@@ -5,8 +5,8 @@
 class Big
 {
 	private:
-		int actor;
-		int clutter[262144]; // (1MB - 8b) array makes sure that sizeof big is exatly 1MB
+		int actor; // 32b primitive type
+		int clutter[262144]; // (1MB - 32b) array makes sure that sizeof big is exatly 1MB
 	public:
 		void setActor(int size);
 		int getActor();
@@ -65,10 +65,10 @@ float Small::getSizeInMB()
 	return sizeof(Small) / (1024.f * 1024.f);
 }
 
-int main()
-{
-	using namespace std;
-	
+using namespace std;
+
+float loop()
+{	
 	const int SIZE = 50000;
 	
 	Big* bigs = new Big[SIZE];
@@ -80,11 +80,13 @@ int main()
 	}
 	t2 = clock();
 	float diffBig = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
+	/*
 	cout << "Running time for bigs: " << diffBig << endl;
 	cout << "Size of big(KB): " << bigs[0].getSizeInKB() << endl;
 	cout << "Size of bigs(KB): " << bigs[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of bigs: " << bigs << endl;
 	cout << "Address of bigs: " << &bigs[0] << endl;
+	*/
 	
 	// ==========
 	
@@ -97,16 +99,30 @@ int main()
 	}
 	t4 = clock();
 	float diffSmall = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
+	/*
 	cout << "\nRunning time for smalls: " << diffSmall << endl;
 	cout << "Size of small(KB): " << smalls[0].getSizeInKB() << endl;
 	cout << "Size of smalls(KB): " << smalls[0].getSizeInKB() * SIZE << endl;
 	cout << "Address of smalls: " << smalls << endl;
 	cout << "Address of smalls: " << &smalls[0] << endl;
-
-	cout << "Result: " << (diffBig / diffSmall) << " times faster" << endl;
-
-	cout << "End of program" << endl;
+	*/
 	
+	float factor = diffBig / diffSmall;
+	cout << "Result: " << factor << " times faster" << endl;	
+	
+	return factor;
+}
+
+int main()
+{
+	float sum;
+	for (int i = 0; i < 10; i++)
+	{
+		sum += loop();
+	}
+
+	cout << "Average: " << sum / 10 << endl;
+
 	return 0;
 }
 
