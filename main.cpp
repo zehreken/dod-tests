@@ -67,95 +67,50 @@ float Small::getSizeInMB()
 
 using namespace std;
 
-float loopBigs()
+float createAndLoopBigs(int size)
 {
-	const int SIZE = 50000;
-
-	Big* bigs = new Big[SIZE];
-	clock_t t1, t2;
-	t1 = clock();
-	for (int i = 0; i < SIZE; i++)
-	{
-		bigs[i].setActor(i);
-	}
-	t2 = clock();
-	float diffBig = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
-
-	return diffBig;
-}
-
-float loopSmalls()
-{
-	const int SIZE = 50000;
-	
-	Small* smalls = new Small[SIZE];
-	clock_t t3, t4;
-	t3 = clock();
-	for (int i = 0; i < SIZE; i++)
-	{
-		smalls[i].setActor(i);
-	}
-	t4 = clock();
-	float diffSmall = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
-
-	return diffSmall;
-}
-
-float loop()
-{	
-	const int SIZE = 50000;
-	
-	Big* bigs = new Big[SIZE];
-	clock_t t1, t2;
-	t1 = clock();
-	for (int i = 0; i < SIZE; i++)
-	{
-		bigs[i].setActor(i);
-	}
-	t2 = clock();
-	float diffBig = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
-	/*
-	cout << "Running time for bigs: " << diffBig << endl;
-	cout << "Size of big(KB): " << bigs[0].getSizeInKB() << endl;
-	cout << "Size of bigs(KB): " << bigs[0].getSizeInKB() * SIZE << endl;
+	Big* bigs = new Big[size];
 	cout << "Address of bigs: " << bigs << endl;
-	cout << "Address of bigs: " << &bigs[0] << endl;
-	*/
 	
-	// ==========
+	clock_t t1, t2;
+	t1 = clock();
+	for (int i = 0; i < size; i++)
+	{
+		bigs[i].setActor(i);
+	}
+	t2 = clock();
+	float time = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
+
+	return time;
+}
+
+float createAndLoopSmalls(int size)
+{
+	Small* smalls = new Small[size];
+	cout << "Address of smalls: " << smalls << endl;
 	
-	Small* smalls = new Small[SIZE];
-	clock_t t3, t4;
-	t3 = clock();
-	for (int i = 0; i < SIZE; i++)
+	clock_t t1, t2;
+	t1 = clock();
+	for (int i = 0; i < size; i++)
 	{
 		smalls[i].setActor(i);
 	}
-	t4 = clock();
-	float diffSmall = ((float)t4 - (float)t3) / CLOCKS_PER_SEC;
-	/*
-	cout << "\nRunning time for smalls: " << diffSmall << endl;
-	cout << "Size of small(KB): " << smalls[0].getSizeInKB() << endl;
-	cout << "Size of smalls(KB): " << smalls[0].getSizeInKB() * SIZE << endl;
-	cout << "Address of smalls: " << smalls << endl;
-	cout << "Address of smalls: " << &smalls[0] << endl;
-	*/
-	
-	float factor = diffBig / diffSmall;
-	cout << "Result: " << factor << " times faster" << endl;	
-	
-	return factor;
+	t2 = clock();
+	float time = ((float)t2 - (float)t1) / CLOCKS_PER_SEC;
+
+	return time;
 }
 
 int main()
 {
+	const int SIZE = 50000;
 	float sum;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 1; i++)
 	{
-		sum += loop();
+		sum += createAndLoopBigs(SIZE) / createAndLoopSmalls(SIZE);
 	}
 
-	cout << "Average: " << sum / 10 << endl;
+	cout << "Average: " << sum / 1 << endl;
 
 	return 0;
 }
