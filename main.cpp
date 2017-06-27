@@ -117,7 +117,7 @@ float createAndLoopSmalls(int size)
 
 int main()
 {
-	const int SIZE = 5000;
+	const int SIZE = 500	0;
 	float sum;
 	for (int i = 0; i < 1; i++)
 	{

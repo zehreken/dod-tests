@@ -32,3 +32,6 @@ This reads n bytes of memory
 
 This reads memory in hex format
 (lldb) memory read -fx [address]
+
+Play with this
+(lldb) memor read -fx -s4 -c4 [address]
