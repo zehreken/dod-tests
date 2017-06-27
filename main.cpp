@@ -12,6 +12,7 @@ class Big
 		int getActor();
 		float getSizeInKB();
 		float getSizeInMB();
+		void fillClutter();
 };
 
 void Big::setActor(int actor)
@@ -32,6 +33,14 @@ float Big::getSizeInKB()
 float Big::getSizeInMB()
 {
 	return sizeof(Big) / (1024.f * 1024.f);
+}
+
+void Big::fillClutter()
+{
+	for (int i = 0; i < 262144; i++)
+	{
+		this->clutter[i] = 0xffffffff;
+	}
 }
 
 class Small
@@ -71,6 +80,11 @@ float createAndLoopBigs(int size)
 {
 	Big* bigs = new Big[size];
 	cout << "Address of bigs: " << bigs << endl;
+
+	for (int i = 0; i < size; i++)
+	{
+		bigs[i].fillClutter();
+	}
 	
 	clock_t t1, t2;
 	t1 = clock();
@@ -103,7 +117,7 @@ float createAndLoopSmalls(int size)
 
 int main()
 {
-	const int SIZE = 50000;
+	const int SIZE = 5000;
 	float sum;
 	for (int i = 0; i < 1; i++)
 	{
