@@ -29,3 +29,6 @@ This reads 32 bytes of memory
 
 This reads n bytes of memory
 (lldb) memory read [address] [address+n]
+
+This reads memory in hex format
+(lldb) memory read -fx [address]
