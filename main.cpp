@@ -6,7 +6,7 @@ class Big
 {
 	private:
 		int actor; // 32b primitive type
-		int clutter[262144]; // (1MB - 32b) array makes sure that sizeof big is exatly 1MB
+		int clutter[25]; // (1KB - 32b) array makes sure that size of big is exactly 1KB
 	public:
 		void setActor(int size);
 		int getActor();
@@ -37,7 +37,7 @@ float Big::getSizeInMB()
 
 void Big::fillClutter()
 {
-	for (int i = 0; i < 262144; i++)
+	for (int i = 0; i < 25; i++)
 	{
 		this->clutter[i] = 0xffffffff;
 	}
@@ -85,7 +85,7 @@ float createAndLoopBigs(int size)
 	{
 		bigs[i].fillClutter();
 	}
-	
+
 	clock_t t1, t2;
 	t1 = clock();
 	for (int i = 0; i < size; i++)
@@ -102,7 +102,7 @@ float createAndLoopSmalls(int size)
 {
 	Small* smalls = new Small[size];
 	cout << "Address of smalls: " << smalls << endl;
-	
+
 	clock_t t1, t2;
 	t1 = clock();
 	for (int i = 0; i < size; i++)
@@ -117,15 +117,16 @@ float createAndLoopSmalls(int size)
 
 int main()
 {
-	const int SIZE = 500	0;
+	const int SIZE = 5000;
 	float sum;
 	for (int i = 0; i < 1; i++)
 	{
 		sum += createAndLoopBigs(SIZE) / createAndLoopSmalls(SIZE);
 	}
 
+	Big big;
+	cout << "Size of Big(KB): " << big.getSizeInKB() << endl;
 	cout << "Average: " << sum / 1 << endl;
 
 	return 0;
 }
-
