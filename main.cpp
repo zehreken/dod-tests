@@ -6,7 +6,7 @@ class Big
 {
 	private:
 		int actor; // 32b primitive type
-		int clutter[25]; // (1KB - 32b) array makes sure that size of big is exactly 1KB
+		int clutter[255]; // (1KB - 32b) array makes sure that size of big is exactly 1KB
 	public:
 		void setActor(int size);
 		int getActor();
@@ -37,7 +37,7 @@ float Big::getSizeInMB()
 
 void Big::fillClutter()
 {
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 255; i++)
 	{
 		this->clutter[i] = 0xffffffff;
 	}
