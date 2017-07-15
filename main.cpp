@@ -8,7 +8,7 @@ class Big
 {
 	private:
 		int actor; // 32b primitive type
-		int clutter[CLUTTER_SIZE]; // (1KB - 32b) array makes sure that size of big is exactly 1KB
+		int clutter[CLUTTER_SIZE]; // (1KB - 32b) Size of big is exactly 1KB
 	public:
 		void setActor(int size);
 		int getActor();
@@ -120,15 +120,16 @@ float createAndLoopSmalls(int size)
 int main()
 {
 	const int SIZE = 50000;
+	const int NUMBER_OF_TRIES = 100;
 	float sum;
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < NUMBER_OF_TRIES; i++)
 	{
 		sum += createAndLoopBigs(SIZE) / createAndLoopSmalls(SIZE);
 	}
 
 	// Big big;
 	// cout << "Size of Big(KB): " << big.getSizeInKB() << endl;
-	cout << "Average: " << sum / 1 << endl;
+	cout << "Average: " << sum / NUMBER_OF_TRIES << endl;
 
 	return 0;
 }
