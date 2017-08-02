@@ -1,9 +1,9 @@
 A project for inspecting the memory when Object Oriented vs Data Oriented methodologies are used.
 
-###### Compiling the program using
+###### Compiling the program
 ```clang++ -g -o p main.cpp```
 
-###### Loading the program to lldb
+###### Loading the program into lldb
 ```lldb p```
 
 ###### Running the program
