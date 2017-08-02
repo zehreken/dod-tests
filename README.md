@@ -1,23 +1,23 @@
 A project for inspecting the memory when Object Oriented vs Data Oriented methodologies are used.
 
-###### Compiling the program
+##### Compiling the program
 ```clang++ -g -o p main.cpp```
 
-###### Loading the program into lldb
+##### Loading the program into lldb
 ```lldb p```
 
-###### Running the program
+##### Running the program
 ```(lldb) run```
 
-###### Dumping line tables in lldb
+##### Dumping line tables in lldb
 ```(lldb) image dump line-table main.cpp```
 
-###### Setting breakpoints at lines
+##### Setting breakpoints at lines
 
 ```(lldb) b main.cpp:4```
 The program uses pointer to get the address of the array.
 
-###### Reading memory
+##### Reading memory
 * This reads 32 bytes of memory
 ```(lldb) memory read [address]```
 * This reads n bytes of memory
